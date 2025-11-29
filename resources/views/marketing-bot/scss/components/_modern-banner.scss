@@ -1,0 +1,759 @@
+/**
+ * Modern Banner Styles
+ * Dark theme banner design matching reference screenshot
+ */
+
+@layer components {
+	
+	/* Banner Section - Dark Background with Wavy Pattern */
+	#banner.site-section {
+		background: #000000;
+		position: relative;
+		min-height: 100vh;
+		display: flex;
+		align-items: center;
+		padding-top: 120px;
+		padding-bottom: 120px;
+		overflow: hidden;
+		
+		/* Extended wavy pattern background - same as header */
+		&::before {
+			content: '';
+			position: absolute;
+			inset: 0;
+			background-image: 
+				radial-gradient(ellipse at 20% 30%, rgba(168, 85, 247, 0.08) 0%, transparent 40%),
+				radial-gradient(ellipse at 80% 70%, rgba(147, 51, 234, 0.06) 0%, transparent 50%),
+				radial-gradient(ellipse at 50% 50%, rgba(168, 85, 247, 0.05) 0%, transparent 60%),
+				radial-gradient(ellipse at 40% 10%, rgba(147, 51, 234, 0.07) 0%, transparent 45%),
+				radial-gradient(ellipse at 60% 90%, rgba(168, 85, 247, 0.04) 0%, transparent 50%),
+				radial-gradient(ellipse at 10% 60%, rgba(147, 51, 234, 0.05) 0%, transparent 45%);
+			background-size: 120% 120%, 100% 100%, 140% 140%, 110% 110%, 130% 130%, 115% 115%;
+			background-position: -10% -10%, 80% 70%, 50% 50%, 40% 10%, 60% 90%, 10% 60%;
+			pointer-events: none;
+			z-index: 0;
+			opacity: 0.8;
+			animation: waveShift 20s ease-in-out infinite;
+		}
+		
+		/* Subtle animated glow effect */
+		&::after {
+			content: '';
+			position: absolute;
+			inset: 0;
+			background: 
+				radial-gradient(circle at 50% 30%, rgba(168, 85, 247, 0.1) 0%, transparent 50%);
+			pointer-events: none;
+			z-index: 0;
+			animation: pulse 8s ease-in-out infinite;
+		}
+		
+		/* Rotating Globe Animation - Center Background with CD-like Holographic Effect */
+		.modern-banner-globe {
+			position: absolute;
+			top: 50%;
+			left: 50%;
+			transform: translate(-50%, -50%);
+			width: 400px;
+			height: 600px;
+			max-width: 90vw;
+			max-height: 90vh;
+			z-index: 1;
+			pointer-events: none;
+			opacity: 0.75;
+			border-radius: 50%;
+			background: 
+				/* CD-like holographic radial bands */
+				conic-gradient(from 0deg,
+					rgba(255, 0, 150, 0.15) 0%,
+					rgba(255, 100, 0, 0.15) 15%,
+					rgba(255, 200, 0, 0.15) 25%,
+					rgba(100, 255, 0, 0.15) 35%,
+					rgba(0, 255, 150, 0.15) 45%,
+					rgba(0, 150, 255, 0.15) 55%,
+					rgba(100, 0, 255, 0.15) 65%,
+					rgba(255, 0, 150, 0.15) 75%,
+					rgba(255, 100, 0, 0.15) 85%,
+					rgba(255, 0, 150, 0.15) 100%
+				),
+				/* Radial holographic streaks */
+				radial-gradient(circle at 20% 30%, rgba(255, 0, 150, 0.2) 0%, transparent 25%),
+				radial-gradient(circle at 70% 20%, rgba(0, 150, 255, 0.18) 0%, transparent 30%),
+				radial-gradient(circle at 40% 70%, rgba(100, 255, 0, 0.16) 0%, transparent 35%),
+				radial-gradient(circle at 80% 60%, rgba(255, 200, 0, 0.17) 0%, transparent 28%),
+				/* Center base */
+				radial-gradient(circle at 50% 50%, rgba(168, 85, 247, 0.15) 0%, rgba(59, 130, 246, 0.1) 40%, transparent 70%);
+			box-shadow: 
+				0 0 150px rgba(255, 0, 150, 0.4),
+				0 0 120px rgba(0, 150, 255, 0.35),
+				0 0 90px rgba(100, 255, 0, 0.3),
+				inset 0 0 120px rgba(255, 200, 0, 0.3),
+				inset 0 0 80px rgba(100, 0, 255, 0.2);
+			filter: blur(0.5px);
+			/* Inner sphere rotates slowly in reverse - independent from border */
+			animation: rotateGlobeInner 18s linear infinite reverse;
+			
+			/* Globe outer ring with rotating animation - multi-color conic gradient */
+			&::before {
+				content: '';
+				position: absolute;
+				top: 50%;
+				left: 50%;
+				transform: translate(-50%, -50%);
+				width: 100%;
+				height: 100%;
+				border-radius: 50%;
+				background: conic-gradient(
+					from 0deg,
+					rgba(255, 0, 150, 0.7) 0%,
+					rgba(255, 100, 0, 0.65) 12.5%,
+					rgba(255, 200, 0, 0.65) 25%,
+					rgba(100, 255, 0, 0.6) 37.5%,
+					rgba(0, 255, 150, 0.6) 50%,
+					rgba(0, 150, 255, 0.65) 62.5%,
+					rgba(100, 0, 255, 0.65) 75%,
+					rgba(255, 0, 150, 0.7) 87.5%,
+					rgba(255, 0, 150, 0.7) 100%
+				);
+				border: 3px solid transparent;
+				background-clip: padding-box;
+				padding: 3px;
+				-webkit-mask: 
+					linear-gradient(#fff 0 0) content-box, 
+					linear-gradient(#fff 0 0);
+				-webkit-mask-composite: xor;
+				mask: 
+					linear-gradient(#fff 0 0) content-box, 
+					linear-gradient(#fff 0 0);
+				mask-composite: exclude;
+				box-shadow: 
+					0 0 100px rgba(255, 0, 150, 0.5),
+					0 0 85px rgba(0, 150, 255, 0.45),
+					0 0 70px rgba(100, 255, 0, 0.4),
+					0 0 55px rgba(255, 200, 0, 0.35),
+					inset 0 0 100px rgba(100, 0, 255, 0.4);
+				/* Outer border rotates forward - independent from inner content */
+				animation: rotateGlobe 25s linear infinite;
+			}
+			
+			/* Globe grid lines with counter-rotation - rotates with inner sphere */
+			&::after {
+				content: '';
+				position: absolute;
+				top: 50%;
+				left: 50%;
+				transform: translate(-50%, -50%);
+				width: 100%;
+				height: 100%;
+				border-radius: 50%;
+				background: 
+					/* Equator line - rainbow gradient */
+					linear-gradient(to bottom, transparent 0%, transparent 45%, rgba(255, 0, 150, 0.5) 49%, rgba(0, 150, 255, 0.5) 51%, transparent 55%, transparent 100%),
+					/* Additional latitude lines - holographic colors */
+					linear-gradient(to bottom, transparent 0%, transparent 25%, rgba(100, 255, 0, 0.4) 49%, rgba(255, 100, 0, 0.4) 51%, transparent 75%, transparent 100%),
+					linear-gradient(to bottom, transparent 0%, transparent 75%, rgba(255, 200, 0, 0.4) 49%, rgba(100, 0, 255, 0.4) 51%, transparent 25%, transparent 100%),
+					/* Longitude lines - rainbow spectrum */
+					linear-gradient(to right, transparent 0%, transparent 45%, rgba(255, 0, 150, 0.45) 49%, rgba(0, 255, 150, 0.45) 51%, transparent 55%, transparent 100%),
+					linear-gradient(to right, transparent 0%, transparent 20%, rgba(0, 150, 255, 0.35) 49%, rgba(255, 200, 0, 0.35) 51%, transparent 80%, transparent 100%),
+					linear-gradient(to right, transparent 0%, transparent 80%, rgba(100, 255, 0, 0.35) 49%, rgba(255, 0, 150, 0.35) 51%, transparent 20%, transparent 100%),
+					/* Additional vertical lines */
+					linear-gradient(to right, transparent 0%, transparent 60%, rgba(100, 0, 255, 0.3) 49%, rgba(0, 150, 255, 0.3) 51%, transparent 40%, transparent 100%);
+				background-size: 100% 100%, 100% 100%, 100% 100%, 100% 100%, 100% 100%, 100% 100%, 100% 100%;
+				/* Grid lines rotate with inner sphere - same speed and direction */
+				animation: rotateGlobeInner 18s linear infinite reverse;
+			}
+		}
+		
+		/* AI Neural Network Animation Layer */
+		.modern-banner-ai-layer {
+			position: absolute;
+			inset: 0;
+			pointer-events: none;
+			z-index: 2;
+			overflow: hidden;
+			opacity: 0.4;
+		}
+	}
+	
+	/* Floating AI Particles */
+	.modern-banner-particle {
+		position: absolute;
+		width: 4px;
+		height: 4px;
+		background: rgba(168, 85, 247, 0.6);
+		border-radius: 50%;
+		box-shadow: 0 0 10px rgba(168, 85, 247, 0.8);
+		animation: floatParticle 15s ease-in-out infinite;
+		
+		&:nth-child(1) {
+			left: 10%;
+			top: 20%;
+			animation-delay: 0s;
+			animation-duration: 12s;
+		}
+		
+		&:nth-child(2) {
+			left: 80%;
+			top: 40%;
+			animation-delay: 2s;
+			animation-duration: 18s;
+		}
+		
+		&:nth-child(3) {
+			left: 30%;
+			top: 70%;
+			animation-delay: 4s;
+			animation-duration: 14s;
+		}
+		
+		&:nth-child(4) {
+			left: 70%;
+			top: 15%;
+			animation-delay: 1s;
+			animation-duration: 16s;
+		}
+		
+		&:nth-child(5) {
+			left: 50%;
+			top: 60%;
+			animation-delay: 3s;
+			animation-duration: 13s;
+		}
+		
+		&:nth-child(6) {
+			left: 20%;
+			top: 50%;
+			animation-delay: 5s;
+			animation-duration: 17s;
+		}
+		
+		&:nth-child(7) {
+			left: 90%;
+			top: 80%;
+			animation-delay: 2.5s;
+			animation-duration: 15s;
+		}
+		
+		&:nth-child(8) {
+			left: 40%;
+			top: 30%;
+			animation-delay: 3.5s;
+			animation-duration: 19s;
+		}
+	}
+		
+	/* Neural Network Connection Lines */
+	.modern-banner-connection {
+		position: absolute;
+		height: 1px;
+		background: linear-gradient(90deg, 
+			transparent,
+			rgba(168, 85, 247, 0.3),
+			rgba(168, 85, 247, 0.5),
+			rgba(168, 85, 247, 0.3),
+			transparent
+		);
+		animation: pulseConnection 4s ease-in-out infinite;
+		
+		&:nth-child(9) {
+			top: 25%;
+			left: 15%;
+			width: 200px;
+			transform: rotate(25deg);
+			animation-delay: 0s;
+		}
+		
+		&:nth-child(10) {
+			top: 45%;
+			left: 60%;
+			width: 180px;
+			transform: rotate(-35deg);
+			animation-delay: 1s;
+		}
+		
+		&:nth-child(11) {
+			top: 65%;
+			left: 25%;
+			width: 220px;
+			transform: rotate(45deg);
+			animation-delay: 2s;
+		}
+		
+		&:nth-child(12) {
+			top: 35%;
+			left: 75%;
+			width: 160px;
+			transform: rotate(-20deg);
+			animation-delay: 1.5s;
+		}
+	}
+		
+	/* Data Stream Effect */
+	.modern-banner-stream {
+		position: absolute;
+		width: 2px;
+		height: 100%;
+		background: linear-gradient(180deg,
+			transparent,
+			rgba(168, 85, 247, 0.4),
+			rgba(147, 51, 234, 0.6),
+			rgba(168, 85, 247, 0.4),
+			transparent
+		);
+		animation: dataStream 6s linear infinite;
+		
+		&:nth-child(13) {
+			left: 20%;
+			animation-delay: 0s;
+		}
+		
+		&:nth-child(14) {
+			left: 60%;
+			animation-delay: 2s;
+		}
+		
+		&:nth-child(15) {
+			left: 85%;
+			animation-delay: 4s;
+		}
+	}
+	
+	@keyframes waveShift {
+		0%, 100% {
+			background-position: -10% -10%, 80% 70%, 50% 50%, 40% 10%, 60% 90%, 10% 60%;
+		}
+		50% {
+			background-position: -5% -5%, 85% 75%, 55% 55%, 45% 15%, 65% 95%, 15% 65%;
+		}
+	}
+	
+	@keyframes pulse {
+		0%, 100% {
+			opacity: 0.3;
+		}
+		50% {
+			opacity: 0.6;
+		}
+	}
+	
+	/* AI Animation Keyframes */
+	@keyframes floatParticle {
+		0%, 100% {
+			transform: translate(0, 0) scale(1);
+			opacity: 0.6;
+		}
+		25% {
+			transform: translate(30px, -40px) scale(1.2);
+			opacity: 0.8;
+		}
+		50% {
+			transform: translate(-20px, -60px) scale(0.9);
+			opacity: 0.4;
+		}
+		75% {
+			transform: translate(40px, -30px) scale(1.1);
+			opacity: 0.7;
+		}
+	}
+	
+	@keyframes pulseConnection {
+		0%, 100% {
+			opacity: 0.2;
+			transform: scaleX(1);
+		}
+		50% {
+			opacity: 0.6;
+			transform: scaleX(1.1);
+		}
+	}
+	
+	@keyframes dataStream {
+		0% {
+			top: -100%;
+			opacity: 0;
+		}
+		10% {
+			opacity: 1;
+		}
+		90% {
+			opacity: 1;
+		}
+		100% {
+			top: 100%;
+			opacity: 0;
+		}
+	}
+	
+	/* Rotating Globe Animation - Outer Border */
+	@keyframes rotateGlobe {
+		0% {
+			transform: translate(-50%, -50%) rotate(0deg);
+		}
+		100% {
+			transform: translate(-50%, -50%) rotate(360deg);
+		}
+	}
+	
+	/* Rotating Globe Animation - Inner Sphere (under border) */
+	@keyframes rotateGlobeInner {
+		0% {
+			transform: translate(-50%, -50%) rotate(0deg);
+		}
+		100% {
+			transform: translate(-50%, -50%) rotate(360deg);
+		}
+	}
+	
+	/* Banner Container */
+	.modern-banner-container {
+		position: relative;
+		z-index: 10;
+	}
+	
+	/* Banner Content */
+	.modern-banner-content {
+		text-align: center;
+		max-width: 900px;
+		margin: 0 auto;
+		position: relative;
+		z-index: 15;
+	}
+	
+	/* Banner Headline */
+	.modern-banner-headline {
+		color: #ffffff;
+		font-size: clamp(2.5rem, 8vw, 5rem);
+		font-weight: 700;
+		line-height: 1.1;
+		letter-spacing: -0.02em;
+		margin-bottom: 1.5rem;
+		
+		span {
+			display: block;
+		}
+	}
+	
+	/* Banner Sub-headline */
+	.modern-banner-subheadline {
+		color: rgba(255, 255, 255, 0.9);
+		font-size: clamp(1rem, 2.5vw, 1.25rem);
+		line-height: 1.6;
+		margin-bottom: 2.5rem;
+		max-width: 700px;
+		margin-left: auto;
+		margin-right: auto;
+	}
+	
+	/* Banner Buttons Container */
+	.modern-banner-buttons {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 1rem;
+		justify-content: center;
+		align-items: center;
+		margin-bottom: 2rem;
+	}
+	
+	/* Primary CTA Button */
+	.modern-banner-button-primary {
+		display: inline-flex;
+		align-items: center;
+		gap: 0.5rem;
+		padding: 1rem 2rem;
+		background: #a855f7;
+		color: #ffffff;
+		border-radius: 1rem;
+		font-weight: 600;
+		font-size: 1rem;
+		text-decoration: none;
+		transition: all 0.3s ease;
+		border: none;
+		cursor: pointer;
+		
+		&::after {
+			content: '→';
+			font-size: 1.125rem;
+			transition: transform 0.3s ease;
+		}
+		
+		&:hover {
+			background: #9333ea;
+			transform: translateY(-2px);
+			box-shadow: 0 8px 20px rgba(168, 85, 247, 0.4);
+			
+			&::after {
+				transform: translateX(4px);
+			}
+		}
+		
+		&:active {
+			transform: translateY(0);
+		}
+	}
+	
+	/* Secondary CTA Button */
+	.modern-banner-button-secondary {
+		display: inline-flex;
+		align-items: center;
+		gap: 0.5rem;
+		padding: 1rem 2rem;
+		background: #1a1a1a;
+		color: #ffffff;
+		border: 1px solid rgba(255, 255, 255, 0.1);
+		border-radius: 1rem;
+		font-weight: 600;
+		font-size: 1rem;
+		text-decoration: none;
+		transition: all 0.3s ease;
+		cursor: pointer;
+		
+		&::after {
+			content: '→';
+			font-size: 1.125rem;
+			transition: transform 0.3s ease;
+		}
+		
+		&:hover {
+			background: rgba(255, 255, 255, 0.05);
+			border-color: rgba(255, 255, 255, 0.2);
+			transform: translateY(-2px);
+			
+			&::after {
+				transform: translateX(4px);
+			}
+		}
+		
+		&:active {
+			transform: translateY(0);
+		}
+	}
+	
+	/* Trust Message */
+	.modern-banner-trust {
+		color: rgba(255, 255, 255, 0.7);
+		font-size: 0.875rem;
+		margin-top: 2rem;
+	}
+	
+	/* Floating Information Boxes */
+	.modern-banner-info-box {
+		position: absolute;
+		background: #1a1a1a;
+		border: 1px solid rgba(255, 255, 255, 0.1);
+		border-radius: 1rem;
+		padding: 1.25rem 1.5rem;
+		color: #ffffff;
+		font-size: 0.9375rem;
+		line-height: 1.5;
+		max-width: 220px;
+		z-index: 20;
+		box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+		transition: all 0.3s ease;
+		
+		&:hover {
+			transform: translateY(-4px);
+			box-shadow: 0 8px 30px rgba(0, 0, 0, 0.4);
+			border-color: rgba(168, 85, 247, 0.3);
+		}
+		
+		/* Arrow pointing to center */
+		&::after {
+			content: '→';
+			position: absolute;
+			color: #a855f7;
+			font-size: 1.5rem;
+			font-weight: bold;
+		}
+		
+		&.info-box-left {
+			left: 5%;
+			top: 50%;
+			transform: translateY(calc(-50% + 7rem));
+			transition: transform 0.6s ease-out, opacity 0.6s ease-out;
+			
+			&::after {
+				right: -2.5rem;
+				top: 50%;
+				transform: translateY(-50%);
+			}
+			
+			&:hover {
+				transform: translateY(calc(-50% - 4px));
+			}
+		}
+		
+		&.info-box-right {
+			right: 5%;
+			top: 50%;
+			transform: translateY(calc(-50% + 7rem));
+			transition: transform 0.6s ease-out, opacity 0.6s ease-out;
+			
+			&::after {
+				left: -2.5rem;
+				top: 50%;
+				transform: translateY(-50%) scaleX(-1);
+			}
+			
+			&:hover {
+				transform: translateY(calc(-50% - 4px));
+			}
+		}
+	}
+	
+	/* Infinity Icon */
+	.modern-banner-infinity {
+		position: absolute;
+		right: 5%;
+		bottom: 20%;
+		width: 48px;
+		height: 48px;
+		background: #1a1a1a;
+		border: 1px solid rgba(255, 255, 255, 0.1);
+		border-radius: 50%;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		color: #ffffff;
+		font-size: 1.5rem;
+		z-index: 20;
+		box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+		transition: all 0.3s ease;
+		
+		&:hover {
+			transform: scale(1.1);
+			border-color: rgba(168, 85, 247, 0.3);
+		}
+	}
+	
+	/* Responsive Adjustments */
+	@media (max-width: 1024px) {
+		.modern-banner-info-box {
+			display: none;
+		}
+		
+		.modern-banner-infinity {
+			display: none;
+		}
+	}
+	
+	@media (max-width: 768px) {
+		#banner.site-section {
+			padding-top: 100px;
+			padding-bottom: 100px;
+		}
+		
+		.modern-banner-headline {
+			margin-bottom: 1rem;
+		}
+		
+		.modern-banner-subheadline {
+			margin-bottom: 2rem;
+		}
+		
+		.modern-banner-buttons {
+			flex-direction: column;
+			width: 100%;
+			
+			.modern-banner-button-primary,
+			.modern-banner-button-secondary {
+				width: 100%;
+				justify-content: center;
+			}
+		}
+	}
+	
+	/* Ensure content is above background layers */
+	.modern-banner-container > * {
+		position: relative;
+		z-index: 10;
+	}
+	
+	/* AI Model Logos Band - Bottom of Banner */
+	.modern-banner-logos-band {
+		position: absolute;
+		bottom: 0;
+		left: 0;
+		right: 0;
+		width: 100%;
+		background: #ffffff;
+		padding: 2rem 0;
+		overflow: hidden;
+		z-index: 5;
+		transform: rotate(-2deg);
+		transform-origin: left center;
+		margin-bottom: -2rem;
+		box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.1);
+		
+		&::before,
+		&::after {
+			content: '';
+			position: absolute;
+			top: 0;
+			width: 100px;
+			height: 100%;
+			background: linear-gradient(to right, #ffffff, transparent);
+			z-index: 10;
+		}
+		
+		&::before {
+			left: 0;
+		}
+		
+		&::after {
+			right: 0;
+			background: linear-gradient(to left, #ffffff, transparent);
+		}
+	}
+	
+	.modern-banner-logos-scroll {
+		overflow: hidden;
+		width: 100%;
+		position: relative;
+	}
+	
+	.modern-banner-logos-track {
+		display: inline-flex;
+		align-items: center;
+		gap: 4rem;
+		animation: scrollLogos 30s linear infinite;
+		white-space: nowrap;
+		padding: 0 2rem;
+	}
+	
+	.modern-banner-logo {
+		font-size: 1.25rem;
+		font-weight: 600;
+		color: #6b7280;
+		white-space: nowrap;
+		flex-shrink: 0;
+		
+		&.modern-banner-logo-primary {
+			color: #a855f7;
+		}
+	}
+	
+	@keyframes scrollLogos {
+		0% {
+			transform: translateX(0);
+		}
+		100% {
+			transform: translateX(-50%);
+		}
+	}
+	
+	/* Responsive adjustments for logos band */
+	@media (max-width: 768px) {
+		.modern-banner-logos-band {
+			padding: 1.5rem 0;
+			
+			.modern-banner-logo {
+				font-size: 1rem;
+			}
+			
+			.modern-banner-logos-track {
+				gap: 2.5rem;
+			}
+		}
+	}
+}
+

@@ -1,0 +1,503 @@
+/**
+ * Modern Header Styles
+ * Custom styles for the redesigned modern header
+ * Dark theme design matching reference screenshot
+ */
+
+@layer components {
+	
+	/* Modern Header Base - Dark Background */
+	.modern-site-header {
+		background: #000000;
+		position: fixed;
+		top: 0;
+		left: 0;
+		right: 0;
+		z-index: 50;
+		
+		/* Wavy lines pattern background - matching banner */
+		&::before {
+			content: '';
+			position: absolute;
+			inset: 0;
+			background-image: 
+				radial-gradient(ellipse at 20% 30%, rgba(168, 85, 247, 0.08) 0%, transparent 40%),
+				radial-gradient(ellipse at 80% 70%, rgba(147, 51, 234, 0.06) 0%, transparent 50%),
+				radial-gradient(ellipse at 50% 50%, rgba(168, 85, 247, 0.05) 0%, transparent 60%),
+				radial-gradient(ellipse at 40% 10%, rgba(147, 51, 234, 0.07) 0%, transparent 45%);
+			background-size: 120% 120%, 100% 100%, 140% 140%, 110% 110%;
+			background-position: -10% -10%, 80% 70%, 50% 50%, 40% 10%;
+			pointer-events: none;
+			z-index: 0;
+			opacity: 0.8;
+			animation: waveShift 20s ease-in-out infinite;
+		}
+		
+		/* Subtle animated glow effect - matching banner */
+		&::after {
+			content: '';
+			position: absolute;
+			inset: 0;
+			background: 
+				radial-gradient(circle at 50% 30%, rgba(168, 85, 247, 0.08) 0%, transparent 50%);
+			pointer-events: none;
+			z-index: 0;
+			animation: pulse 8s ease-in-out infinite;
+		}
+		
+		&.header-scrolled {
+			.modern-nav-container {
+				box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+			}
+		}
+		
+		&.is-dark {
+			.modern-nav-container {
+				border-color: rgba(255, 255, 255, 0.1);
+				background: transparent;
+			}
+		}
+	}
+	
+	/* Shared animations for header and banner */
+	@keyframes waveShift {
+		0%, 100% {
+			background-position: -10% -10%, 80% 70%, 50% 50%, 40% 10%;
+		}
+		50% {
+			background-position: -5% -5%, 85% 75%, 55% 55%, 45% 15%;
+		}
+	}
+	
+	@keyframes pulse {
+		0%, 100% {
+			opacity: 0.3;
+		}
+		50% {
+			opacity: 0.6;
+		}
+	}
+	
+	/* Navigation Container - Transparent */
+	.modern-nav-container {
+		position: relative;
+		background: transparent;
+		border: 1px solid rgba(255, 255, 255, 0.1);
+		box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+		overflow: hidden;
+		
+		&.header-scrolled {
+			box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+			background: transparent;
+		}
+		
+		/* Ensure content is above layers */
+		> * {
+			position: relative;
+			z-index: 10;
+		}
+	}
+	
+	/* Mobile Menu Styles - Transparent */
+	@media (max-width: 991px) {
+		.site-nav-container.modern-nav-menu {
+			background: rgba(0, 0, 0, 0.5);
+			backdrop-filter: blur(10px);
+			-webkit-backdrop-filter: blur(10px);
+			border-color: rgba(255, 255, 255, 0.1);
+			box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+		}
+	}
+	
+	/* Progressive Blur */
+	.modern-nav-blur {
+		position: absolute;
+		inset: 0;
+		border-radius: inherit;
+		z-index: 2;
+		pointer-events: none;
+	}
+	
+	/* Logo */
+	.modern-site-logo {
+		position: relative;
+		z-index: 20;
+		display: flex;
+		align-items: center;
+		
+		img {
+			max-height: 100%;
+			object-fit: contain;
+			/* Logo will be visible based on theme - dark logo for dark background */
+		}
+	}
+	
+	/* Navigation Menu */
+	.modern-nav-menu,
+	.site-nav-container {
+		position: relative;
+		z-index: 20;
+		
+		&.lqd-is-active {
+			max-height: calc(100vh - 150px) !important;
+		}
+	}
+	
+	/* Navigation Links - White Text */
+	.modern-nav-link {
+		position: relative;
+		padding: 0.5rem 0.75rem;
+		border-radius: var(--modern-radius-lg);
+		color: #ffffff;
+		transition: color var(--modern-transition-base);
+		font-weight: 400;
+		
+		&::after {
+			content: '';
+			position: absolute;
+			bottom: 0;
+			left: 50%;
+			transform: translateX(-50%) scaleX(0);
+			width: 60%;
+			height: 2px;
+			background: #ffffff;
+			border-radius: 2px;
+			transition: transform var(--modern-transition-base);
+		}
+		
+		&:hover,
+		&.active {
+			color: #ffffff;
+			transform: translateY(-1px);
+		}
+		
+		&:hover::after,
+		&.active::after {
+			transform: translateX(-50%) scaleX(1);
+		}
+		
+		svg {
+			width: 12px;
+			height: 12px;
+			fill: currentColor;
+		}
+	}
+	
+	/* Navigation Item */
+	.modern-nav-item {
+		position: relative;
+	}
+	
+	/* Dropdown Toggle */
+	.modern-nav-dropdown-toggle {
+		cursor: pointer;
+	}
+	
+	/* Language Switcher - White Text */
+	.modern-icon-button {
+		position: relative;
+		cursor: pointer;
+		background: rgba(255, 255, 255, 0.1);
+		border-color: rgba(255, 255, 255, 0.2);
+		color: #ffffff;
+		
+		&:hover {
+			border-color: rgba(255, 255, 255, 0.3);
+			background: rgba(255, 255, 255, 0.15);
+			color: #ffffff;
+			box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+			transform: translateY(-1px);
+		}
+		
+		&:active {
+			transform: translateY(0);
+		}
+	}
+	
+	/* Language Dropdown - Transparent with blur */
+	.modern-language-dropdown {
+		position: absolute;
+		z-index: 1000;
+		overflow: hidden;
+		background: rgba(0, 0, 0, 0.6);
+		backdrop-filter: blur(15px);
+		-webkit-backdrop-filter: blur(15px);
+		border-color: rgba(255, 255, 255, 0.1);
+		box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+	}
+	
+	.modern-dropdown-item {
+		position: relative;
+		color: #ffffff;
+		
+		&::before {
+			content: '';
+			position: absolute;
+			left: 0;
+			top: 50%;
+			transform: translateY(-50%) scaleX(0);
+			width: 3px;
+			height: 60%;
+			background: #a855f7;
+			border-radius: 0 2px 2px 0;
+			transition: transform var(--modern-transition-base);
+		}
+		
+		&:hover::before {
+			transform: translateY(-50%) scaleX(1);
+		}
+		
+		&:hover {
+			padding-left: calc(1rem + 8px);
+			background: rgba(255, 255, 255, 0.05);
+		}
+	}
+	
+	/* Buttons */
+	.modern-button-primary {
+		position: relative;
+		background: linear-gradient(135deg, 
+			#8b5cf6, 
+			#a855f7,
+			#c084fc
+		);
+		border: none;
+		box-shadow: 0 2px 8px rgba(168, 85, 247, 0.3);
+		color: #ffffff;
+		
+		&::before {
+			content: '';
+			position: absolute;
+			inset: 0;
+			border-radius: inherit;
+			background: linear-gradient(135deg, 
+				#9333ea, 
+				#a855f7
+			);
+			opacity: 0;
+			transition: opacity var(--modern-transition-base);
+		}
+		
+		&:hover::before {
+			opacity: 1;
+		}
+		
+		&:hover {
+			box-shadow: 0 4px 12px rgba(168, 85, 247, 0.4);
+		}
+		
+		&:active {
+			transform: translateY(0) scale(0.98);
+		}
+	}
+	
+	.modern-button-secondary {
+		position: relative;
+		background: rgba(255, 255, 255, 0.1);
+		border: 1px solid rgba(255, 255, 255, 0.2);
+		box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+		color: #ffffff;
+		
+		&:hover {
+			background: rgba(255, 255, 255, 0.15);
+			border-color: rgba(255, 255, 255, 0.3);
+			box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+		}
+		
+		&:active {
+			transform: translateY(0) scale(0.98);
+		}
+	}
+	
+	.modern-button-ghost {
+		position: relative;
+		background: #a855f7;
+		border: none;
+		z-index: 1;
+		visibility: visible;
+		opacity: 1;
+		color: #ffffff;
+		padding-right: 2.5rem;
+		display: inline-flex;
+		align-items: center;
+		gap: 0.5rem;
+		
+		/* Arrow icon */
+		&::after {
+			content: '→';
+			position: absolute;
+			right: 1rem;
+			font-size: 1rem;
+			line-height: 1;
+			transition: transform var(--modern-transition-base);
+		}
+		
+		&:hover {
+			background: #9333ea;
+			opacity: 1;
+			visibility: visible;
+			
+			&::after {
+				transform: translateX(2px);
+			}
+		}
+		
+		&:focus {
+			background: #9333ea;
+			opacity: 1;
+			visibility: visible;
+		}
+		
+		&:focus-visible {
+			outline: 2px solid #a855f7;
+			outline-offset: 2px;
+		}
+		
+		&:active {
+			transform: translateY(0) scale(0.98);
+		}
+		
+		span {
+			position: relative;
+			z-index: 2;
+		}
+	}
+	
+	/* Responsive visibility - hide on mobile */
+	@media (max-width: 639px) {
+		.modern-button-ghost {
+			display: none;
+		}
+	}
+	
+	@media (min-width: 640px) {
+		.modern-button-ghost {
+			display: inline-flex;
+		}
+	}
+	
+	/* Mobile Menu Toggle - White Lines */
+	.modern-mobile-menu-toggle,
+	.mobile-nav-trigger {
+		cursor: pointer;
+		background: rgba(255, 255, 255, 0.1);
+		border-color: rgba(255, 255, 255, 0.2);
+		
+		span span {
+			background-color: #ffffff !important;
+		}
+		
+		&.lqd-is-active {
+			span span {
+				&:first-child {
+					transform: translateY(2px) translateX(2px) rotate(45deg);
+				}
+				&:last-child {
+					transform: translateX(-2px) translateY(-6px) rotate(-45deg);
+				}
+			}
+		}
+		
+		&:hover {
+			transform: scale(1.05);
+			background: rgba(255, 255, 255, 0.15);
+		}
+		
+		&:active {
+			transform: scale(0.95);
+		}
+	}
+	
+	/* Language Links in Mobile - White Text */
+	.modern-nav-lang-link {
+		display: flex;
+		align-items: center;
+		gap: 0.5rem;
+		transition: all var(--modern-transition-base);
+		color: #ffffff;
+		
+		&:hover {
+			transform: translateX(4px);
+			color: #ffffff;
+		}
+	}
+	
+	/* Nav Actions Container */
+	.modern-nav-actions {
+		position: relative;
+		z-index: 20;
+		
+		> * {
+			position: relative;
+			z-index: 1;
+		}
+		
+		.modern-button-ghost {
+			z-index: 2;
+		}
+	}
+	
+	/* Smooth scroll behavior */
+	html {
+		scroll-behavior: smooth;
+	}
+	
+	/* Header animations on scroll */
+	@keyframes slideDown {
+		from {
+			transform: translateY(-100%);
+			opacity: 0;
+		}
+		to {
+			transform: translateY(0);
+			opacity: 1;
+		}
+	}
+	
+	.modern-site-header {
+		animation: slideDown 0.4s ease-out;
+	}
+	
+	/* Ensure transparent background in all states */
+	.modern-nav-container {
+		background: transparent !important;
+	}
+	
+	/* Responsive adjustments */
+	@media (max-width: 991px) {
+		.modern-nav-menu {
+			border-top: 1px solid rgba(255, 255, 255, 0.1);
+		}
+		
+		.modern-nav-link {
+			width: 100%;
+			justify-content: flex-start;
+			padding-left: 1rem;
+			color: #ffffff;
+		}
+	}
+	
+	/* Accessibility improvements */
+	.modern-nav-link:focus,
+	.modern-button-primary:focus,
+	.modern-button-secondary:focus,
+	.modern-button-ghost:focus,
+	.modern-icon-button:focus {
+		outline: 2px solid hsl(var(--modern-primary));
+		outline-offset: 2px;
+	}
+	
+	/* Reduced motion support */
+	@media (prefers-reduced-motion: reduce) {
+		.modern-site-header,
+		.modern-nav-link,
+		.modern-button-primary,
+		.modern-button-secondary,
+		.modern-button-ghost,
+		.modern-icon-button {
+			transition: none;
+			animation: none;
+		}
+	}
+}
+
