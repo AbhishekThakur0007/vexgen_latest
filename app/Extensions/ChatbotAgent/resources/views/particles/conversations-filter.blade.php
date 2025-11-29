@@ -106,13 +106,22 @@
                     @foreach ($agent_filters as $key => $filter)
                         <li>
                             <a
-                                class='group flex items-center justify-between gap-1 rounded px-2.5 py-1.5 text-2xs font-medium transition hover:bg-foreground/5 [&.active]:bg-primary/5'
+                                class='group flex items-center justify-between gap-2 rounded-lg px-3 py-2 text-2xs font-medium transition-all hover:bg-primary/10 hover:translate-x-0.5 [&.active]:bg-primary/15 [&.active]:shadow-sm [&.active]:shadow-primary/20'
                                 href="#"
                                 @click.prevent="filterAgent('{{ $key }}')"
                                 :class="{ active: filters.agent === '{{ $key }}' }"
                             >
-                                {{ $filter['label'] }}
-                                <x-tabler-check class="hidden size-4 text-primary group-[&.active]:block" />
+                                <div class="flex items-center gap-2">
+                                    @if($key === 'all')
+                                        <x-tabler-list class="size-4 text-primary/70 group-[&.active]:text-primary" />
+                                    @elseif($key === 'ai')
+                                        <x-tabler-robot class="size-4 text-cyan-400/70 group-[&.active]:text-cyan-400" />
+                                    @elseif($key === 'human')
+                                        <x-tabler-user class="size-4 text-blue-400/70 group-[&.active]:text-blue-400" />
+                                    @endif
+                                    <span class="group-[&.active]:font-semibold">{{ $filter['label'] }}</span>
+                                </div>
+                                <x-tabler-check class="hidden size-4 text-primary group-[&.active]:block animate-in fade-in slide-in-from-right-1" />
                             </a>
                         </li>
                     @endforeach

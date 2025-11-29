@@ -116,7 +116,7 @@ export default ( { mode } ) => {
 	process.env = { ...process.env, ...loadEnv( mode, process.cwd() ) };
 
 	return defineConfig( {
-		server: detectServerConfig( process.env.VITE_APP_DOMAIN || 'magicai.test' ),
+		server: detectServerConfig( process.env.VITE_APP_DOMAIN || 'localhost' ),
 		plugins,
 		build: {
 			rollupOptions: {
@@ -163,7 +163,7 @@ function detectServerConfig( domain ) {
 				host: process.env.VITE_APP_URL,
 			},
 			cors: {
-				origin: process.env.VITE_APP_ORIGIN ?? 'magicai.test',
+				origin: process.env.VITE_APP_ORIGIN ?? 'localhost',
 				credentials: true,
 			},
 			watch: {

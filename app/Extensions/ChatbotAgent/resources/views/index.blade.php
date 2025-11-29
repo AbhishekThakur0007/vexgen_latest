@@ -247,16 +247,19 @@
         body[data-theme="marketing-bot-dashboard"] .lqd-dropdown-dropdown-content,
         .lqd-ext-chatbot-history .lqd-dropdown-dropdown-content,
         .lqd-dropdown-dropdown-content {
-            background: linear-gradient(135deg, rgba(10, 14, 39, 0.98) 0%, rgba(26, 29, 58, 0.98) 50%, rgba(15, 23, 41, 0.98) 100%) !important;
-            backdrop-filter: blur(20px) saturate(180%) !important;
-            -webkit-backdrop-filter: blur(20px) saturate(180%) !important;
-            border: 1px solid rgba(0, 212, 255, 0.3) !important;
+            background: linear-gradient(135deg, 
+                rgba(30, 41, 59, 0.95) 0%, 
+                rgba(51, 65, 85, 0.95) 50%, 
+                rgba(30, 58, 138, 0.95) 100%) !important;
+            backdrop-filter: blur(24px) saturate(180%) !important;
+            -webkit-backdrop-filter: blur(24px) saturate(180%) !important;
+            border: 1px solid rgba(59, 130, 246, 0.4) !important;
             box-shadow: 
-                0 8px 32px rgba(0, 0, 0, 0.5),
-                0 0 0 1px rgba(0, 212, 255, 0.2),
-                inset 0 1px 0 rgba(255, 255, 255, 0.15),
-                0 0 40px rgba(0, 212, 255, 0.2),
-                0 0 80px rgba(123, 47, 247, 0.15) !important;
+                0 10px 40px rgba(0, 0, 0, 0.4),
+                0 0 0 1px rgba(59, 130, 246, 0.3),
+                inset 0 1px 0 rgba(255, 255, 255, 0.1),
+                0 0 60px rgba(59, 130, 246, 0.25),
+                0 0 100px rgba(96, 165, 250, 0.15) !important;
         }
 
         /* Override any default background classes */
@@ -265,7 +268,10 @@
         body[data-theme="marketing-bot-dashboard"] .lqd-dropdown-dropdown-content[class*="bg-"],
         .lqd-ext-chatbot-history .bg-dropdown-background,
         .lqd-ext-chatbot-history .lqd-dropdown-dropdown-content.bg-dropdown-background {
-            background: linear-gradient(135deg, rgba(10, 14, 39, 0.98) 0%, rgba(26, 29, 58, 0.98) 50%, rgba(15, 23, 41, 0.98) 100%) !important;
+            background: linear-gradient(135deg, 
+                rgba(30, 41, 59, 0.95) 0%, 
+                rgba(51, 65, 85, 0.95) 50%, 
+                rgba(30, 58, 138, 0.95) 100%) !important;
         }
 
         /* Force override for any gray/light backgrounds */
@@ -282,9 +288,13 @@
         .lqd-ext-chatbot-history .lqd-dropdown-dropdown-content a:hover,
         .lqd-ext-chatbot-history .lqd-dropdown-dropdown-content button:hover,
         .lqd-ext-chatbot-history .lqd-dropdown-dropdown-content li:hover {
-            background: linear-gradient(135deg, rgba(0, 212, 255, 0.2) 0%, rgba(123, 47, 247, 0.2) 100%) !important;
-            border-left: 2px solid rgba(0, 212, 255, 0.7) !important;
-            transition: all 0.3s ease;
+            background: linear-gradient(135deg, 
+                rgba(59, 130, 246, 0.15) 0%, 
+                rgba(96, 165, 250, 0.15) 50%,
+                rgba(147, 197, 253, 0.1) 100%) !important;
+            border-left: 3px solid rgba(59, 130, 246, 0.6) !important;
+            transform: translateX(2px);
+            transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
         }
 
         /* Active dropdown item - Global */
@@ -292,9 +302,49 @@
         body[data-theme="marketing-bot-dashboard"] .lqd-dropdown-dropdown-content [class*="active"],
         .lqd-ext-chatbot-history .lqd-dropdown-dropdown-content a.active,
         .lqd-ext-chatbot-history .lqd-dropdown-dropdown-content [class*="active"] {
-            background: linear-gradient(135deg, rgba(0, 212, 255, 0.25) 0%, rgba(123, 47, 247, 0.25) 100%) !important;
-            border-left: 3px solid rgba(0, 212, 255, 0.9) !important;
-            box-shadow: 0 0 20px rgba(0, 212, 255, 0.4) !important;
+            background: linear-gradient(135deg, 
+                rgba(59, 130, 246, 0.25) 0%, 
+                rgba(96, 165, 250, 0.2) 50%,
+                rgba(147, 197, 253, 0.15) 100%) !important;
+            border-left: 3px solid rgba(59, 130, 246, 0.9) !important;
+            box-shadow: 
+                0 0 20px rgba(59, 130, 246, 0.3),
+                inset 0 1px 0 rgba(255, 255, 255, 0.1) !important;
+        }
+
+        /* Card Background - Modern Blue to Cyan Gradient */
+        body[data-theme="marketing-bot-dashboard"] .bg-card-background,
+        body[data-theme="marketing-bot-dashboard"] .lqd-card.bg-card-background,
+        .lqd-ext-chatbot-history .bg-card-background,
+        .lqd-ext-chatbot-history .lqd-card.bg-card-background {
+            background: linear-gradient(135deg, 
+                rgba(30, 58, 138, 0.95) 0%, 
+                rgba(59, 130, 246, 0.90) 50%, 
+                rgba(103, 232, 249, 0.85) 100%) !important;
+            backdrop-filter: blur(20px) saturate(180%) !important;
+            -webkit-backdrop-filter: blur(20px) saturate(180%) !important;
+            border-color: rgba(59, 130, 246, 0.3) !important;
+            box-shadow: 
+                0 8px 32px rgba(0, 0, 0, 0.3),
+                0 0 0 1px rgba(59, 130, 246, 0.2),
+                inset 0 1px 0 rgba(255, 255, 255, 0.1),
+                0 0 40px rgba(59, 130, 246, 0.2),
+                0 0 80px rgba(103, 232, 249, 0.15) !important;
+        }
+
+        /* Card text color for better contrast */
+        body[data-theme="marketing-bot-dashboard"] .bg-card-background,
+        body[data-theme="marketing-bot-dashboard"] .lqd-card.bg-card-background,
+        .lqd-ext-chatbot-history .bg-card-background,
+        .lqd-ext-chatbot-history .lqd-card.bg-card-background {
+            color: rgba(255, 255, 255, 0.95) !important;
+        }
+
+        body[data-theme="marketing-bot-dashboard"] .bg-card-background *,
+        body[data-theme="marketing-bot-dashboard"] .lqd-card.bg-card-background *,
+        .lqd-ext-chatbot-history .bg-card-background *,
+        .lqd-ext-chatbot-history .lqd-card.bg-card-background * {
+            color: rgba(255, 255, 255, 0.95) !important;
         }
 
         /* Dropdown text color - Global */
