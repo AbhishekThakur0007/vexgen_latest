@@ -71,6 +71,7 @@
             position: relative;
             text-shadow: 0 0 40px rgba(0, 212, 255, 0.5);
             font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
+            padding: 7px !important;
         }
 
         @keyframes gradient-shift {

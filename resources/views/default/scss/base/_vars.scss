@@ -113,9 +113,9 @@
 		--folder-shadow: var(--card-shadow);
 		--header-background: var(--background);
 		--header-border: var(--border);
-		--dropdown-background: var(--background);
-		--dropdown-foreground: var(--foreground);
-		--dropdown-border: var(--border);
+		--dropdown-background: 220 60% 18%;
+		--dropdown-foreground: 0 0% 98%;
+		--dropdown-border: 220 50% 35%;
 		--dropdown-rounded: 0.5rem;
 		--label: 221 13% 46%;
 		--surface: 240 8% 95%;
@@ -235,9 +235,9 @@
 		--surface: 218 14% 13%;
 		--surface-light: 217 12% 21%;
 		--clay: 218 14% 13%;
-		--dropdown-background: var(--surface);
-		--dropdown-foreground: var(--foreground);
-		--dropdown-border: var(--border);
+		--dropdown-background: 220 55% 22%;
+		--dropdown-foreground: 0 0% 98%;
+		--dropdown-border: 220 50% 40%;
 
 		--headings-color: hsl(var(--heading-foreground));
 

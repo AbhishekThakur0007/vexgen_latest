@@ -242,6 +242,7 @@
         /* Unique Heading Styling - Gradient Text with Glow */
         .documents-page-title {
             display: inline-block;
+            padding:7px;
             font-size: 2.5rem;
             font-weight: 800;
             letter-spacing: -0.02em;
@@ -286,11 +287,27 @@
         }
         
         /* Better Typography for Headings */
-        .lqd-titlebar-title {
+        /* .lqd-titlebar-title {
             font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
             font-weight: 700;
             letter-spacing: -0.01em;
-        }
+        } */
+
+        .lqd-titlebar-title {
+    display: inline-block;
+    font-size: 2.5rem;
+    font-weight: 800;
+    letter-spacing: -0.02em;
+    background: linear-gradient(135deg, #00d4ff 0%, #0099ff 40%, #7b2ff7 100%);
+    background-size: 200% auto;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    animation: gradient-shift 4s ease-in-out infinite, text-glow-pulse 3s ease-in-out infinite;
+    position: relative;
+    text-shadow: 0 0 40px rgba(0, 212, 255, 0.5);
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
+}
         
         /* Improved Button and Filter Text */
         .lqd-filter-btn,

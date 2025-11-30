@@ -103,7 +103,7 @@
     ]
   },
   "resources/views/default/scss/dashboard.scss": {
-    "file": "assets/dashboard-Bu2nlpqo.css",
+    "file": "assets/dashboard-DzFoq54d.css",
     "src": "resources/views/default/scss/dashboard.scss"
   },
   "resources/views/default/scss/landing-page.scss": {
@@ -149,7 +149,7 @@
     ]
   },
   "resources/views/marketing-bot-dashboard/scss/dashboard.scss": {
-    "file": "assets/dashboard-BM_muY19.css",
+    "file": "assets/dashboard-C_EkB_pk.css",
     "src": "resources/views/marketing-bot-dashboard/scss/dashboard.scss",
     "isEntry": true,
     "name": "dashboard",
@@ -191,7 +191,7 @@
     ]
   },
   "resources/views/marketing-bot/scss/dashboard.scss": {
-    "file": "assets/dashboard-xogiTf3A.css",
+    "file": "assets/dashboard-DQmFN4Fq.css",
     "src": "resources/views/marketing-bot/scss/dashboard.scss"
   },
   "resources/views/marketing-bot/scss/landing-page.scss": {
